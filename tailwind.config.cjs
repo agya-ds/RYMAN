@@ -19,14 +19,20 @@ module.exports = {
       'location-card-bg': '#F5F5F5',
       'white': '#ffffff',
       'black': '#000000',
+      'red': "#d61a0c",
       'grey': '#f0f1f2',
+      'blue': "#10106a",
       'button-border-color': '#e41b13',
+      'dark_blue': "#09093e",
+      'dark_red': "#bd1508",
       'location-card-bg-hover': '#68717a'
 
 
     },
     fontFamily: {
       'Encode-Sans': ['"Encode Sans", Georgia, Arial, sans-serif'],
+      raleway: ['"Raleway", Georgia, Arial, sans-serif'],
+      bebas_neue: ['"Bebas Neue", Georgia, Arial, sans-serif'],
 
     },
     extend: {

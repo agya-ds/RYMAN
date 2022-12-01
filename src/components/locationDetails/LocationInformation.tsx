@@ -13,6 +13,7 @@ import { Link, useAnalytics } from "@yext/pages/components";
 import { useEffect, useRef, useState } from "react";
 import Modal from "react-modal";
 import Holidayhour from "./holidayHours";
+import { svgIcons } from "../../types/svgicon";
 import OpenClose from "../commons/openClose";
 type props = {
   additionalHoursText: any;
@@ -221,28 +222,7 @@ const LocationInformation = (data: props) => {
                 <div className="inner-box">
                   {/* <h4 className="font-semibold">{data.c_heading.storeInfo}</h4> */}
                   <div className="store-address">
-                    <div className="icon-dtl">
-
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="21.23"
-                        height="30"
-                        viewBox="0 0 21.23 30"
-                      >
-                        <g transform="translate(0 0)">
-                          <path
-                            d="M6.789,23.576c1.079,1.719,2.246,3.8,3.4,5.825.427.747.813.859,1.326-.027,1.113-1.931,2.207-3.931,3.359-5.8,3.5-5.661,9.223-11.181,4.67-18.8C15.5-1.987,4.5-1.265,1.216,5.034c-3.769,7.219,2.117,13.039,5.574,18.542Z"
-                            fill="#cbb081"
-                          // fill-rule="evenodd"
-                          />
-                          <path
-                            d="M10.61,6.247a4.116,4.116,0,1,1-4.116,4.116A4.117,4.117,0,0,1,10.61,6.247Z"
-                            fill="#fff"
-                          // fill-rule="evenodd"
-                          />
-                        </g>
-                      </svg>
-                    </div>
+                  <span className="icon">{svgIcons.locationaddressicon}</span>
                     <div className=" address-sec ">
                       <h2 className="heading">{data.name}</h2>
                       <p>
@@ -257,19 +237,7 @@ const LocationInformation = (data: props) => {
                   {data.phone ? (
                     <>
                       <div className="store-phone">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          width="23.987"
-                          height="23.987"
-                          viewBox="0 0 23.987 23.987"
-                        >
-                          <path
-                            d="M19.64,17.328c-.617,1.876-3.036,2.812-4.764,2.656A15.194,15.194,0,0,1,8,17.14,22.652,22.652,0,0,1,.885,8.652C-.22,6.3-.468,3.411,1.176,1.268A2.827,2.827,0,0,1,3.429,0C4.8-.063,4.992.721,5.463,1.943c.351.913.819,1.845,1.08,2.792C7.032,6.5,5.321,6.575,5.105,8.019c-.133.911.969,2.132,1.468,2.781A13.473,13.473,0,0,0,10.051,14c.76.479,1.984,1.341,2.853.865,1.339-.733,1.213-2.991,3.084-2.227a30.12,30.12,0,0,1,2.833,1.463c1.431.769,1.364,1.567.819,3.223h0"
-                            transform="translate(4.5) rotate(13)"
-                            fill="#cbb081"
-                            fill-rule="#cbb081"
-                          />
-                        </svg>
+                      <span className="icon">{svgIcons.locatorphoneicon}</span>
                         <p>
                           <Link
                             data-ya-track="phone"
@@ -287,7 +255,7 @@ const LocationInformation = (data: props) => {
                     <></>
                   )}
 
-<div className="hours mb-5">
+<div className="hours mb-5">STORE TIME
                     <div className="time-row">
                       <div className="day"></div>
 

@@ -20,7 +20,7 @@ const metersToMiles = (meters: number) => {
 
 const LocationCard: CardComponent<Location> = ({ result }) => {
 
-  const { address, hours,additionalHoursText, mainPhone, timezone,c_heading } = result.rawData;
+  const { address, hours, additionalHoursText, mainPhone, timezone, c_heading } = result.rawData;
   const formattedPhone = formatPhoneNumber(mainPhone);
 
   const [timeStatus, setTimeStatus] = useState("");
@@ -31,39 +31,38 @@ const LocationCard: CardComponent<Location> = ({ result }) => {
       setTimeStatus("");
     }
   }
-  
-  var url = "";
-                var name: any = result.rawData.name.toLowerCase();
-                var string: any = name.toString();
-                let removeSpecialCharacters = string.replace(
-                  /[&\/\\#^+()$~%.'":*?<>{}!@]/g,
-                  "");
-                let results: any = removeSpecialCharacters.replaceAll(" ", "-");
-                if (!result.rawData.slug) {
-                  url = `${result.id}-${results}.html`;
-                } else {
-                  url = `${result.rawData.slug.toString()}.html`;
-                }
 
-  return ( 
+  var url = "";
+  var name: any = result.rawData.name.toLowerCase();
+  var string: any = name.toString();
+  let removeSpecialCharacters = string.replace(
+    /[&\/\\#^+()$~%.'":*?<>{}!@]/g,
+    "");
+  let results: any = removeSpecialCharacters.replaceAll(" ", "-");
+  if (!result.rawData.slug) {
+    url = `${result.id}-${results}.html`;
+  } else {
+    url = `${result.rawData.slug.toString()}.html`;
+  }
+
+  return (
     <div className={`location result  onhighLight`} id={`result-${result.index}`}>
-     <div className="relative w-full">
+      <div className="relative w-full">
         <h2><a href={`${url}`}>{result.rawData.name}</a></h2>
         <div className="miles"><span className="icon">{svgIcons.locationmiles}</span> {metersToMiles(result.distance ?? 0)} mi</div>
       </div>
 
       {/* <p className="text-sm text-slate-700">{address.line1}</p>
-      <p className="text-sm text-slate-700">{address.city}, {address.region}, {address.postalCode} </p> */}             
+      <p className="text-sm text-slate-700">{address.city}, {address.region}, {address.postalCode} </p> */}
 
       <div className="location-info onhighLight">
         <div className="icon-row onhighLight"><Address address={address} /> </div>
-        {mainPhone?
-        <div className="icon-row"> <span className="icon">
-          {svgIcons.locatorphoneicon}</span>
-          <a href={"tel:"+mainPhone}>{formattedPhone} </a>
-          </div>:""}
+        {mainPhone ?
+          <div className="icon-row"> <span className="icon">
+            {svgIcons.locatorphoneicon}</span>
+            <a href={"tel:" + mainPhone}>{formattedPhone} </a>
+          </div> : ""}
         <div className="open-close onhighLight">
-
           <div className="hours-sec ">
             <div className="OpenCloseStatus ">
               <div className="hours-labels icon-row">
@@ -76,10 +75,11 @@ const LocationCard: CardComponent<Location> = ({ result }) => {
 
               </div>
               <div className={timeStatus + " daylist"} >
-                <Hours key={result.rawData.id} hours={hours} additionalHoursText={additionalHoursText}/></div>
+                <Hours key={result.rawData.id} hours={hours} additionalHoursText={additionalHoursText} /></div>
             </div>
 
-          </div> </div>
+          </div>
+        </div>
       </div>
 
       <div className="store-link">
@@ -91,14 +91,14 @@ const LocationCard: CardComponent<Location> = ({ result }) => {
           <GetDirection label="Get Direction" buttonText="Direction" address={address} latitude={result.rawData.displayCoordinate?.latitude} longitude={result.rawData.displayCoordinate?.longitude} />
           : <GetDirection label="Get Direction" address={address} buttonText="Direction" latitude={result.rawData.yextDisplayCoordinate?.latitude} longitude={result.rawData.yextDisplayCoordinate?.longitude} />}
         {/* <button onClick={getDirectionUrl} >getlocation</button> */}
-       {/* {result.rawData.c_heading.viewDetails? */}
+        {/* {result.rawData.c_heading.viewDetails? */}
         <a className="consulation" href={`${url}`}>
           {/* {result.rawData.c_heading.viewDetails} */}View Details
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
             <path id="Icon_ionic-md-arrow-forward" data-name="Icon ionic-md-arrow-forward" d="M5.977,14.977h12.15l-5.6,5.6,1.45,1.4,8-8-8-8-1.4,1.4,5.55,5.6H5.977Z" transform="translate(-5.977 -5.977)"></path>
           </svg>
-          </a>
-          {/* :"view details"} */}
+        </a>
+        {/* :"view details"} */}
       </div>
     </div >
   );

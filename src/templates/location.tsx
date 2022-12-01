@@ -17,7 +17,8 @@ import Productcategory from "../components/locationDetails/Productcategores";
 import Faqs from "../components/locationDetails/Faqs";
 import OpenClose from "../components/commons/openClose";
 import TrustBoxContainer from "../components/locationDetails/Trust";
-import Aboutbanner from "../components/locationDetails/aboutbanner";
+// import Aboutbanner from "../components/locationDetails/aboutbanner";
+import Footer from "../components/layouts/footer";
 import Header from "../components/layouts/header";
 import "../index.css";
 import {
@@ -41,7 +42,7 @@ import {
   TransformProps,
   HeadConfig,
 } from "@yext/pages";
-import Footer from "../components/layouts/footer";
+// import Footer from "../components/layouts/footer";
 import Service from "../components/locationDetails/service";
 import Opening from "../components/commons/openClose";
 import Example from "../components/locationDetails/Example";
@@ -87,7 +88,7 @@ export const config: TemplateConfig = {
       // "c_footercondition",
       // "c_footerheading",
       // "c_footerdata",
-      // "c_tagline",
+      "c_tagLine",
       // "c_metaTags",
       // "dm_directoryParents.name",
       // "dm_directoryParents.slug",
@@ -104,7 +105,7 @@ export const config: TemplateConfig = {
       // "c_ogtags",
       // "c_heading",
       // "c_ctabutton",
-       "additionalHoursText"
+      "additionalHoursText"
 
     ],
 
@@ -321,7 +322,7 @@ type ExternalApiData = TemplateProps & { externalApiData: nearByLocation };
 export const transformProps: TransformProps<ExternalApiData> = async (
   data: any
 ) => {
-  const url = `https://liveapi-sandbox.yext.com/v2/accounts/me/entities/geosearch?radius=500&location=${data.document.yextDisplayCoordinate.latitude},${data.document.yextDisplayCoordinate.longitude}&filter={}&api_key=6799219ca0628f2db461adf85417ecaa&v=20181201&resolvePlaceholders=true&entityTypes=location&limit=4&savedFilterIds=1100445776`
+  const url = `https://liveapi-sandbox.yext.com/v2/accounts/me/entities/geosearch?radius=500&location=${data.document.yextDisplayCoordinate.latitude},${data.document.yextDisplayCoordinate.longitude}&filter={}&api_key=035100bebb9493919ff410433b99586e&v=20181201&resolvePlaceholders=true&entityTypes=location&limit=4`
   const externalApiData = (await fetch(url).then((res: any) =>
     res.json()
   )) as nearByLocation;
@@ -377,7 +378,7 @@ const Location: Template<ExternalApiRenderData> = ({
     // c_dreamteam,
     c_booking,
     photoGallery,
-    c_tagline,
+    c_tagLine,
     c_Diptyqueervices,
     slug,
     c_bannerimage,
@@ -385,7 +386,7 @@ const Location: Template<ExternalApiRenderData> = ({
     c_aboutdream,
     c_productcategore,
     c_featuredsproducts,
-    c_shopdata,
+    // c_shopdata,
     c_relatedfaqs,
     c_brand,
     c_heading,
@@ -458,8 +459,8 @@ const Location: Template<ExternalApiRenderData> = ({
   // var buttonLink = c_booking.button.link ? c_booking.button.link : "Link";
   // var ctaLabel   = c_booking.cta.label ? c_booking.cta.label : "CTA Label" ; 
   // var ctaLink = c_booking.cta.link ? c_booking.cta.link : "CTA Link"
-  console.log(c_booking, 'externalApiData')
-  console.log(c_shopdata, 'c_shopdata')
+  // console.log(c_booking, 'externalApiData')
+  // console.log(c_tagline, 'cdfdfds')
   return (
     <>
       {/* <JsonLd<Location>
@@ -552,7 +553,7 @@ const Location: Template<ExternalApiRenderData> = ({
       >
         {/* <PageLayout _site={_site}> */}
         {/* <Header header={_site.c_header} /> */}
-<Header></Header>
+        <Header></Header>
         {/* <Banner name={name} address={address} openTime={openTime} /> */}
         {/* <BreadCrumbs
           name={name}
@@ -569,20 +570,24 @@ const Location: Template<ExternalApiRenderData> = ({
           // }
           template={"location"}
         /> */}
-<PhotoSlider  photoGallery={photoGallery}
- />
- <div className="container-fluid px-24 py-6">
- <h1 className="text-3xl text-black text-center pb-4 ">ABOUT DIPTYQUE</h1>
-{description}
-</div>
 
+        {/* banner section */}
+        <Banner
+          Name={name}
+          //  BackgroundImage=""
+          TagLine={c_tagLine}
+        //  CtaButton=""
+
+        />
+        {/* open close status section */}
         {hours ? <>
           <div className="open-heading text-4xl"  >
             <OpenClose timezone={timezone} hours={hours} deliveryHours={hours}></OpenClose>
           </div></> : <></>
         }
+{/* location detail section */}
 
-        <LocationInformation
+<LocationInformation
           prop={hours}
           deliveryHours={deliveryHours}
           coords={yextDisplayCoordinate}
@@ -594,8 +599,19 @@ const Location: Template<ExternalApiRenderData> = ({
           c_ctabutton={c_ctabutton}
           timezone={timezone}
           additionalHoursText={additionalHoursText}
-hours={hours}
+          hours={hours}
         />
+
+        <PhotoSlider photoGallery={photoGallery}
+        />
+        <div className="container-fluid px-24 py-6">
+          <h1 className="text-3xl text-black text-center pb-4 ">ABOUT RYMAN</h1>
+          {description}
+        </div>
+
+
+
+     
 
 
         {/* {c_booking.button.label && c_booking.button.link && c_booking.cta.label && c_booking.cta.link ? ( */}
@@ -787,11 +803,11 @@ hours={hours}
           <h4 className="sec_heading  font-bold">{c_heading.faqs ? c_heading.faqs : "Frequently Asked Questions"}</h4>
           <Faqs prop={c_relatedfaqs}></Faqs>
         </div> : <></>} */}
-{/* 
+        {/* 
           <Footer c_footerServices={_site.c_footerServices} c_footerOrders={_site.c_footerOrders} c_footerNewatdiptyque={_site.c_footerNewatdiptyque} c_footerMostpopular={_site.c_footerMostpopular} c_service={_site.c_service} /> */}
 
       </AnalyticsProvider>
-      
+
     </>
   );
 };

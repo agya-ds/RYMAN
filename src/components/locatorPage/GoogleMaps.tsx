@@ -9,6 +9,7 @@ import Groupnear from "..//../images/Groupnear.png";
 import phone from "..//../images/phone.svg";
 import GetDirection from "../commons/GetDirection";
 import cluster from "../../images/cluser.png"
+import MapiconHover from "..//../images/map-centerH.png";
 // import Hours from '..//../components/commons/hours';
 import Hours from '..//../components/commons/hours';
 import { renderToString } from "react-dom/server";
@@ -117,7 +118,7 @@ function UnwrappedGoogleMaps({
 
 //new
 let marker_hover_icon = {
-  url:cluster,
+  url:MapiconHover,
   fillColor: pinStyles.fill,
   scale: 1.1,
   fillOpacity: 1,

@@ -1,7 +1,7 @@
-
 import * as React from "react";
-import bannerImage from "../../images/banner.png";
+import bannerImage from "../../images/hero-banner.png"
 import { Link } from "@yext/pages/components";
+// import { bannerText } from "../constants";
 export type Address = {
   line1: string;
   city: string;
@@ -11,38 +11,47 @@ export type Address = {
 };
 type props = {
   Name: any;
-  TagLine:any;
-  BackgroundImage: any;
-  template: any;
+  TagLine: any;
+  // BackgroundImage: any;
+  // CtaButton: any;
+
 };
 type Banner = {
   name?: string;
   address?: Address;
   openTime?: string;
   children?: React.ReactNode;
+  TagLine?:any;
 };
 
 const Banner = (Data: props) => {
-  const conversionDetails_primaryCTA = {
-    cid: "dc6937a6-345d-4c0f-b63f-79be3c29d7bc",
-    cv: "3",
-  };
-  console.log(Data,"data")
-  console.log(Data.BackgroundImage.url,"photos")
+ 
   return (
     <>
       <div className="hero">
         <img
           className="hero-img"
-        
-            src={Data.template == "location" ? Data.BackgroundImage : bannerImage}
-    
+          src={bannerImage}
           alt="banner"
+          title="banner"
         />
-        <div className="container mx-auto text-center">
-          <h1>{Data.Name ? Data.Name : ""}</h1>
-          <h2>{Data.TagLine ? Data.TagLine : ""}</h2>
-
+        <div className="container text-center">
+          <h1>
+          {Data.Name ? Data.Name:""}
+          </h1>
+          <p> {Data.TagLine ? Data.TagLine:""}</p>
+         
+            <div className="cta_btn">
+              <Link
+                rel="noopener noreferrer"
+               
+                href= "Book Now"
+                className="button"
+              >
+               
+              </Link>
+            </div>
+        
         </div>
       </div>
     </>
@@ -50,4 +59,3 @@ const Banner = (Data: props) => {
 };
 
 export default Banner;
-
